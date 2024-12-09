@@ -1,0 +1,221 @@
+{
+  "services": {
+    "Website Monitoring": {
+      "plans": {
+        "Web Uptime": {
+          "price": 720,
+          "features": {
+            "Basic monitors": 25,
+            "Synthetic web transactions": 0,
+            "Minute poll frequency": "1 min",
+            "Network monitoring interface": 0,
+            "Netflow analyzer interface": 0,
+            "NCM device": 0,
+            "Logs": "1GB",
+            "Pageview": "0",
+            "Sites": 0,
+            "Basic status page in StatusIQ": 20,
+            "SMS/voice credits per month": 50,
+            "Support": "Standard",
+            "Integration": "NA"
+          }
+        },
+        "Pro": {
+          "price": 2800,
+          "features": {
+            "Basic monitors": 40,
+            "Synthetic web transactions": 3,
+            "Minute poll frequency": "1 min",
+            "Network monitoring interface": 5,
+            "Netflow analyzer interface": 2,
+            "NCM device": 1,
+            "Logs": "500MB",
+            "Pageview": "500K RUM",
+            "Sites": 5,
+            "Basic status page in StatusIQ": 3,
+            "SMS/voice credits per month": 150,
+            "Support": "Classic",
+            "Integration": "Multi-user"
+          }
+        },
+        "Classic": {
+          "price": 7120,
+          "features": {
+            "Basic monitors": 100,
+            "Synthetic web transactions": 5,
+            "Minute poll frequency": "1 min",
+            "Network monitoring interface": 10,
+            "Netflow analyzer interface": 2,
+            "NCM device": 1,
+            "Logs": "500MB",
+            "Pageview": "1M RUM",
+            "Sites": 10,
+            "Basic status page in StatusIQ": 3,
+            "SMS/voice credits per month": 250,
+            "Support": "Classic",
+            "Integration": "Third party"
+          }
+        },
+        "Enterprise": {
+          "price": 18000,
+          "features": "Request a price quote"
+        }
+      }
+    },
+    "Infrastructure": {
+      "plans": {
+        "Starter": {
+          "price": 720,
+          "features": "Basic plan for infrastructure services"
+        }
+      },
+      "add_ons": {
+        "Basic monitors": {
+          "10 monitors": 1200,
+          "50 monitors": 4000,
+          "500 monitors": 40000
+        },
+        "Microsoft Application monitoring": {
+          "2 Advanced Microsoft apps": 1600,
+          "5 Advanced Microsoft apps": 4800,
+          "25 Advanced Microsoft apps": 20000
+        },
+        "Network monitoring": {
+          "100 Network interfaces": 4000,
+          "250 Network interfaces": 6000,
+          "1000 Network interfaces": 16000
+        },
+        "Netflow analyzer Interface": {
+          "50 Netflow interfaces": 10000,
+          "1000 Netflow interfaces": 1601000
+        },
+        "Network configuration manager (NCM)": {
+          "25 NCM devices": 4000,
+          "250 NCM devices": 36000,
+          "1000 NCM devices": 120000
+        },
+        "Log management": {
+          "10GB logs": 800,
+          "100GB logs": 7600,
+          "1TB logs": 72000
+        },
+        "Hourly pricing for auto scale": "0.167 INR/hour"
+      }
+    },
+    "APM": {
+      "plans": {
+        "Pro": {
+          "price": 2800,
+          "features": "Basic plan for APM"
+        }
+      },
+      "add_ons": {
+        "Application Performance Monitoring": {
+          "2 Applications": 1600,
+          "5 Applications": 4800,
+          "25 Applications": 20000
+        },
+        "Real User Monitoring": [
+          {
+            "page_views": "500K",
+            "sites": 5,
+            "price": 1920
+          },
+          {
+            "page_views": "5M",
+            "sites": 50,
+            "price": 9920
+          }
+        ],
+        "Mobile APM": {
+          "5M credits": 7920
+        },
+        "Hourly pricing for auto scaling workloads": "1.667 INR/hour"
+      }
+    },
+    "All in One": {
+      "plans": {
+        "Pro": {
+          "price": 2800,
+          "features": {
+            "Basic monitors": 40,
+            "Poll frequency": "1 min",
+            "locations": "130 locations",
+            "Advanced monitors": 3,
+            "Network monitoring interface": 5,
+            "Netflow analyzer interface": 2,
+            "NCM device": 1,
+            "Logs": "500MB",
+            "Pageview": "500K RUM",
+            "Sites": 5,
+            "Basic status pages in StatusIQ": 3,
+            "SMS/voice credits per month": 150
+          }
+        },
+        "Classic": {
+          "price": 7120,
+          "features": {
+            "Basic monitors": 100,
+            "Poll frequency": "1 min",
+            "locations": "130 locations",
+            "Advanced monitors": 5,
+            "Network monitoring interface": 10,
+            "Netflow analyzer interface": 2,
+            "NCM device": 1,
+            "Logs": "500MB",
+            "Pageview": "1M RUM",
+            "Sites": 10,
+            "Basic status pages in StatusIQ": 3,
+            "SMS/voice credits per month": 250
+          }
+        }
+      }
+    },
+    "MSP": {
+      "price": 3600,
+      "add_ons": {
+        "Basic monitor": {
+          "20 monitors": 2400,
+          "50 monitors": 4000,
+          "500 monitors": 40000
+        },
+        "Advanced monitor": {
+          "5 monitors": 4800,
+          "25 monitors": 20000
+        },
+        "Network interface": {
+          "100 interfaces": 4000,
+          "250 interfaces": 6000,
+          "1000 interfaces": 16000
+        },
+        "Real user monitoring": [
+          {
+            "page_views": "500K",
+            "sites": 5,
+            "price": 1920
+          },
+          {
+            "page_views": "5M",
+            "sites": 50,
+            "price": 9920
+          }
+        ],
+        "Mobile APM": {
+          "5M credits": 7920
+        },
+        "Log management": {
+          "10GB logs": 800,
+          "100GB logs": 7600,
+          "1TB logs": 72000
+        },
+        "Customer add-ons": {
+          "1 add-on": 800
+        },
+        "Hourly pricing for auto-scaling workloads": {
+          "Virtual cloud server": "0.167 INR/hour",
+          "Cloud application instance": "1.667 INR/hour"
+        }
+      }
+    }
+  }
+}
