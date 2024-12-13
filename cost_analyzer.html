@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cost Analyzer</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #chat-container {
+            width: 100%;
+            max-width: 800px;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+        }
+
+        #logo {
+            width: 100px;
+            height: auto;
+            margin-right: 8px;
+        }
+
+        .message-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .bot-message,
+        .user-message {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .bot-message {
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .user-message {
+            background-color: #d1ecf1;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: right;
+        }
+
+        #input-section {
+            display: flex;
+            gap: 10px;
+        }
+
+        #usage-file {
+            flex-grow: 1;
+        }
+
+        #send-btn {
+            width: 100px;
+        }
+
+        #result-container {
+            display: none;
+            /* Initially hidden */
+            margin-top: 20px;
+            /* Add spacing below the header */
+            width: 100%;
+        }
+
+        #result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            /* Space between table and header */
+        }
+
+        #result-table th,
+        #result-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #result-table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat-container">
+        <!-- Redirect link -->
+        <div class="top-left-link">
+            <a href="/" class="btn btn-link text-decoration-none">Zoho Chat Assistant</a>
+        </div>
+        <div id="logo-container">
+            <img src="https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1397180181/f8aaab73f17af0296eba5deda7a5b95b.png"
+                alt="Zoho Logo" id="logo"> <!-- Zoho logo -->
+            <h2 class="text-primary mb-0">Cost Analyzer</h2>
+            <div id="result-container">
+                <h3 class="text-primary mb-3">Analysis Results</h3>
+                <table id="result-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Current Plan</th>
+                            <th>Max Limit</th>
+                            <th>Usage</th>
+                            <th>Allowed</th>
+                            <th>Suggested New Plan</th>
+                            <th>Estimated Savings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="message-container" id="message-container"></div>
+        <div id="input-section" class="mt-3">
+            <input type="file" id="usage-file" class="form-control" accept=".json">
+            <button id="send-btn" class="btn btn-primary">Analyze</button>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('send-btn').addEventListener('click', async () => {
+            const fileInput = document.getElementById('usage-file');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please upload a JSON file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('usage_file', file);
+
+            try {
+                const response = await fetch('/analyze_plan', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    renderTable(result.table_data);
+                } else {
+                    alert(result.error || 'An error occurred.');
+                }
+            } catch (error) {
+                alert('Error: Unable to process the file.');
+            }
+        });
+        function displayMessage(message, className) {
+            const messageContainer = document.getElementById('message-container');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = className;
+            messageDiv.textContent = message;
+            messageContainer.appendChild(messageDiv);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+        function renderTable(data) {
+            const tableBody = document.getElementById('result-table-body');
+            tableBody.innerHTML = ''; // Clear any existing rows
+
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+
+                const featureCell = document.createElement('td');
+                featureCell.textContent = row.feature;
+
+                const currentPlanCell = document.createElement('td');
+                currentPlanCell.textContent = row.current_plan;
+
+                const maxLimitCell = document.createElement('td');
+                maxLimitCell.textContent = row.max_limit;
+
+                const usageCell = document.createElement('td');
+                usageCell.textContent = row.usage;
+
+                const allowedCell = document.createElement('td');
+                allowedCell.textContent = row.allowed;
+
+                const suggestedPlanCell = document.createElement('td');
+                suggestedPlanCell.textContent = row.suggested_plan;
+
+                const savingsCell = document.createElement('td');
+                savingsCell.textContent = row.savings;
+
+                tr.appendChild(featureCell);
+                tr.appendChild(currentPlanCell);
+                tr.appendChild(maxLimitCell);
+                tr.appendChild(usageCell);
+                tr.appendChild(allowedCell);
+                tr.appendChild(suggestedPlanCell);
+                tr.appendChild(savingsCell);
+
+                tableBody.appendChild(tr);
+            });
+
+            document.getElementById('result-container').style.display = 'block';
+        }
+
+
+    </script>
+</body>
+
+</html>

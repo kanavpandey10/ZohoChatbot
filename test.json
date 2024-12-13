@@ -1,0 +1,135 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "is_pkg_user": true,
+        "enabled_products": {
+            "server": true,
+            "website": true,
+            "netflow": false,
+            "aws": false,
+            "apm": true,
+            "network": true
+        },
+        "is_upgrade_supported": true,
+        "billing_details": {
+            "payment_type": "Credit Card",
+            "is_onetime_purchase_eligible": false,
+            "modify_card_details": true,
+            "hourly_pricing": {
+                "is_enabled": false
+            },
+            "allow_renew_subscription": false,
+            "billing_contacts": [
+                {
+                    "email_id": "david.paul+thirdparty-billingcontact@zohotest.com",
+                    "display_name": "Billingcontact"
+                },
+                {
+                    "email_id": "david.paul+thirdparty@zohotest.com",
+                    "display_name": "david.paul+thirdparty"
+                }
+            ],
+            "next_payment_date": "2024-03-22T00:00:00+0530"
+        },
+        "pack_details": {
+            "isYearly": true,
+            "is_customized_pack_user": false,
+            "default": {
+                "app_log_size": "536870912",
+                "ncm_devices": 1,
+                "rum_page_views": "1000000",
+                "all_monitor_count": 105,
+                "advanced_monitor_count": 5,
+                "free_alert_credits": 250,
+                "netflow_interfaces": 2,
+                "network_interfaces": 10
+            },
+            "addons": [
+                {
+                    "addon_count": 11,
+                    "addon_label": "Additional 10 Basic Monitors Add-on",
+                    "addon_id": 1
+                },
+                {
+                    "addon_count": 1,
+                    "addon_label": "Additional 50 Basic Monitors Add-on",
+                    "addon_id": 11
+                },
+                {
+                    "addon_count": 1,
+                    "addon_label": "Additional 100 Basic Monitors Add-on",
+                    "addon_id": 15
+                },
+                {
+                    "addon_count": 10,
+                    "addon_label": "Additional 5 Advanced Monitors Add-on",
+                    "addon_id": 2
+                },
+                {
+                    "addon_count": 1,
+                    "addon_label": "100 Interfaces Add-on",
+                    "addon_id": 41
+                }
+            ],
+            "package_name": "Classic Plan",
+            "package_id": 41,
+            "addon_supported": true,
+            "alertCreditsNextRenwalDate": "Nov 22, 2024 21:11"
+        },
+        "is_paid_user": true,
+        "show_usage_summary": true,
+        "usage_details": {
+            "alert_credits": {
+                "alert_addons": 50,
+                "is_topup_enabled": false,
+                "remaining_alert_credits": 260
+            },
+            "basic_monitors": {
+                "used_internet_services": 25,
+                "allowed": 360,
+                "used": 221.0,
+                "used_server": 147
+            },
+            "ncm_devices": {
+                "allowed": 1,
+                "used": 1
+            },
+            "interfaces_details": {
+                "interfaces_used": 15,
+                "interfaces_limit": 110
+            },
+            "total_monitors": {
+                "allowed": 415,
+                "used": 229.0
+            },
+            "rum_details": {
+                "page_views_used": "0",
+                "page_views_limit": "1000000"
+            },
+            "team_details": {
+                "allowed": 0
+            },
+            "network_devices_active": 3,
+            "advanced_monitors": {
+                "used_apm": 3,
+                "used_internet_services": 3,
+                "allowed": 55,
+                "used_mobileapm": -1,
+                "used": 8.0,
+                "used_server": 3
+            },
+            "netflow_interfaces_details": {
+                "interfaces_used": 0,
+                "interfaces_limit": 2
+            },
+            "applog_details": {
+                "app_logs_used": "0",
+                "app_logs_used_per_month_in_gb": "0",
+                "app_logs_left": "536870912",
+                "app_logs_used_per_month_in_bytes": "0",
+                "app_logs_limit": "536870912"
+            }
+        }
+    }
+}

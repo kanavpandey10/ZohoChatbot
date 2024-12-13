@@ -1,0 +1,57 @@
+libraries needed:
+openai,
+Flask, 
+request, 
+jsonify, 
+send_from_directory,
+json,
+spacy,
+uuid,
+psycopg2,
+SimpleConnectionPool
+
+For the openAI functioncalling make sure you have a valid API key that has enough number if tokens to test
+
+
+
+
+try:
+        response = openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "Help users find service plans."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        # Correct way to extract message content
+        return (response.choices[0].message.content)
+    except Exception as e:
+        return f"OpenAI error: {e}"
+
+Example response format:
+<p><b>Recommended Invoice:</b></p>
+<p>Based on your recent usage, we suggest the following configuration:</p>
+<hr>
+<p><b>Base Plan:</b> Classic Plan</p>
+<p><b>Price:</b> <b>7120 INR</b> per year</p>
+<p><b>Included Features:</b></p>
+<ul>
+  <li><b>Basic Monitors:</b> 100</li>
+  <li><b>Advanced Monitors:</b> 5</li>
+</ul>
+<p>To optimize your usage, consider these add-ons:</p>
+<ul>
+  <li><b>Additional 50 Basic Monitors:</b> <b>4000 INR</b></li>
+  <li><b>Additional 5 Advanced Monitors:</b> <b>4800 INR</b></li>
+</ul>
+<p><b>Total Cost:</b> <b>19920 INR</b></p>
+<hr>
+<p>This configuration ensures cost optimization while meeting your requirements.</p>
+
+Generate the response in this style using the example above.
+
+
+
+
+how to run  the code:
+/Users/nabin/Desktop/Zoho/ZChat/myenv/bin/python /Users/nabin/Desktop/Zoho/ZChat/chatbot.py 
